@@ -1,0 +1,215 @@
+Product Requirements Document (PRD): AI-Powered Learning Roadmap Web App
+1. Overview
+1.1 Product Name
+SkillRoad: AI-Powered Learning Roadmap
+1.2 Purpose
+SkillRoad is a web application designed to help students identify, learn, and master job-relevant skills by generating personalized, AI-driven learning roadmaps. It aggregates resources from platforms like YouTube, aligns them with job requirements from portals like LinkedIn and Naukri, and provides a structured learning path with mock assessments to ensure job readiness.
+1.3 Target Audience
+
+Primary Users: Students (high school, college, or self-learners) seeking to acquire skills for specific jobs or industries.
+Secondary Users: Career changers or hobbyists looking for structured learning paths.
+
+1.4 Problem Statement
+Students often struggle to:
+
+Identify which skills are required for specific jobs.
+Find high-quality, free learning resources in a structured format.
+Navigate the overwhelming amount of content on platforms like YouTube.
+Assess their readiness for job interviews or practical applications.
+
+1.5 Value Proposition
+SkillRoad empowers students by providing a tailored, step-by-step learning roadmap powered by AI, sourcing the best free YouTube content, aligned with real-world job requirements, and culminating in mock assessments to ensure job readiness.
+2. Functional Requirements
+2.1 Core Features
+2.1.1 Skill and Job Input
+
+Description: Users input their desired job role (e.g., "Web Developer," "Data Analyst") or specific skills (e.g., "Python," "React.js").
+Details:
+Input via a text field or dropdown with predefined job roles.
+Optional: Allow users to select their experience level (beginner, intermediate, advanced).
+
+
+Success Criteria: Users can submit a job role or skill, and the system validates the input.
+
+2.1.2 Web Scraping for Roadmap Resources
+
+Description: The AI aggregates roadmap data from educational platforms (e.g., roadmap.sh, freeCodeCamp, Coursera).
+Details:
+Scrape structured roadmaps for the selected job/skill.
+Prioritize reputable sources based on predefined criteria (e.g., popularity, user ratings).
+
+
+Success Criteria: The system retrieves at least 3-5 relevant roadmap sources per job/skill.
+
+2.1.3 Job Description Analysis
+
+Description: The AI analyzes job listings on platforms like LinkedIn and Naukri to identify required skills.
+Details:
+Scrape job descriptions for the user’s input job role.
+Extract key skills, tools, and qualifications.
+Compare extracted skills with roadmap data to refine the learning path.
+
+
+Success Criteria: The system identifies at least 5 relevant skills per job role with 90% accuracy.
+
+2.1.4 AI-Powered Roadmap Generation
+
+Description: The AI creates a structured, step-by-step learning roadmap tailored to the user’s job goal and experience level.
+Details:
+Prioritize foundational skills first, followed by advanced topics.
+Include estimated time for each module (e.g., "Learn Python Basics: 10 hours").
+Highlight optional/extraneous skills for advanced users.
+
+
+Success Criteria: The roadmap is clear, sequential, and covers all critical skills for the job.
+
+2.1.5 YouTube Resource Integration
+
+Description: The AI searches YouTube for high-quality video playlists or tutorials matching each roadmap module.
+Details:
+Evaluate videos based on views, likes, comments, and channel credibility.
+Embed video links or playlists directly in the roadmap.
+Ensure content is free and accessible.
+
+
+Success Criteria: Each roadmap module includes at least 1-2 high-quality YouTube resources.
+
+2.1.6 Mock Assessments
+
+Description: The AI generates mock interviews or quizzes to test the user’s knowledge based on the roadmap.
+Details:
+Create multiple-choice quizzes or coding challenges for technical skills.
+Simulate interview questions based on job descriptions.
+Provide feedback and scores to users.
+
+
+Success Criteria: Users complete at least one assessment per roadmap module with actionable feedback.
+
+2.1.7 User Dashboard
+
+Description: A personalized dashboard to track progress and access the roadmap.
+Details:
+Display the roadmap with progress bars for each module.
+Show completed videos, quiz scores, and time spent.
+Allow users to save or export their roadmap (e.g., as a PDF).
+
+
+Success Criteria: Users can view their progress and resume learning seamlessly.
+
+2.2 Non-Functional Requirements
+
+Performance: Roadmap generation should take no longer than 5 min.
+Scalability: Support up to 1,000 concurrent users in the MVP phase.
+Accessibility: Adhere to WCAG 2.1 guidelines for inclusive design.
+Security: Protect user data with secure authentication (e.g., OAuth) and HTTPS.
+Usability: Intuitive UI with a mobile-first design.
+
+3. Technical Requirements
+3.1 Platform
+
+No-Code Tools:
+Lovable: Use for building the front-end UI and user dashboard due to its drag-and-drop interface and AI integration capabilities.
+Replit: Host the backend logic, API integrations, and AI processing. Replit’s collaborative environment supports rapid prototyping.
+
+
+APIs:
+YouTube Data API v3 for video search and metadata.
+Web scraping APIs (e.g., Scrapy or Apify) for roadmap.sh and job portals.
+AI model integration (e.g., via xAI’s API or a no-code AI tool like Bubble’s AI plugins) for roadmap generation and assessment creation.
+
+
+Database: Use Replit’s built-in database or integrate with Airtable for storing user data and roadmaps.
+Authentication: OAuth 2.0 via Google or GitHub for user login.
+
+3.2 Architecture
+
+Frontend: Lovable for responsive UI components (dashboard, input forms, roadmap display).
+Backend: Replit for scripting AI logic, web scraping, and API calls.
+AI Workflow:
+Scrape roadmap and job data.
+Process data with AI to create structured roadmaps.
+Query YouTube API for video resources.
+Generate quizzes using AI based on roadmap content.
+
+
+Data Flow:
+User inputs job/skill → AI scrapes data → AI generates roadmap → YouTube API fetches videos → Roadmap displayed on dashboard → User completes modules and assessments.
+
+
+
+3.3 Constraints
+
+No-Code Limitations: Lovable and Replit may limit complex AI model training; rely on pre-trained models or external APIs.
+API Rate Limits: YouTube API has quotas (10,000 units/day); optimize queries to stay within limits.
+Scraping Ethics: Ensure compliance with terms of service for roadmap.sh, LinkedIn, and Naukri. Use APIs where available.
+Free Resources: Prioritize free YouTube content to align with the app’s mission.
+
+4. User Stories
+
+As a student, I want to input a job role (e.g., "Data Scientist") so that I can receive a tailored learning roadmap.
+As a beginner, I want a roadmap that starts with foundational skills so I’m not overwhelmed.
+As a user, I want high-quality YouTube videos embedded in my roadmap so I can learn for free.
+As a job seeker, I want mock interviews to practice skills so I feel confident applying for jobs.
+As a busy student, I want to track my progress on a dashboard so I can pick up where I left off.
+
+5. Milestones & MVP Scope
+5.1 MVP Features
+
+User input for job role/skill.
+AI-generated roadmap based on roadmap.sh and job portal data.
+YouTube video integration for at least 3 roadmap modules.
+Basic dashboard to view the roadmap and track progress.
+One mock quiz for a single skill.
+
+5.2 Future Enhancements
+
+Support for multiple languages in roadmaps.
+Community features (e.g., forums for learners).
+Integration with additional platforms (e.g., Coursera, Udemy free courses).
+Advanced assessments with coding challenges or live mock interviews.
+
+6. Success Metrics
+
+User Engagement: 70% of users complete at least one roadmap module within 30 days.
+Roadmap Quality: 80% of users rate the roadmap as “helpful” or “very helpful” in feedback surveys.
+Retention: 50% of users return to the app within a week of first use.
+Performance: Roadmap generation completes in under 30 seconds for 95% of requests.
+
+7. Risks & Mitigations
+
+Risk: Limited API quotas for YouTube or scraping.
+Mitigation: Cache frequently accessed data and optimize API calls.
+
+
+Risk: Inaccurate roadmap due to poor AI analysis.
+Mitigation: Validate AI outputs with manual testing and user feedback.
+
+
+Risk: No-code platform limitations.
+Mitigation: Start with Lovable/Replit; transition to custom code if needed for scale.
+
+
+Risk: Legal issues with web scraping.
+Mitigation: Use public APIs where possible and comply with platform terms.
+
+
+
+8. Timeline
+
+Set up Lovable for UI and Replit for backend. Define API integrations.
+Implement web scraping and AI roadmap generation logic.
+Integrate YouTube API and build dashboard.
+Add mock assessment feature.
+Test MVP, gather feedback, and iterate.
+
+9. Stakeholders
+
+Product Owner: You (the student), defining the vision and prioritizing features.
+Developers: You, using Lovable and Replit for no-code development.
+Users: Students and learners providing feedback during beta testing.
+
+10. Assumptions
+
+Users have basic internet access and familiarity with web apps.
+YouTube API and scraping tools are sufficient for MVP needs.
+Lovable and Replit can handle the required functionality without custom coding.
